@@ -3,6 +3,6 @@ services:
     name: render-deploy-example
     env: node
     region: oregon
-    buildCommand: "npm install"
-    startCommand: "npm start"
+    buildCommand: "pnpm install"
+    startCommand: "pnpm start"
     plan: free
