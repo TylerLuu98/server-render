@@ -15,15 +15,14 @@ mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 30000, // Tăng thời gian chờ kết nối lên 30 giây
+    serverSelectionTimeoutMS: 30000, // Increase connection timeout
+    bufferMaxEntries: 0, // Disable op buffering
   })
   .then(() => {
     console.log("Connected to MongoDB Atlas");
-    console.log("Database name:", mongoose.connection.name);
+    mongoose.set("debug", true); // Enable MongoDB debug logs
   })
-  .catch((err) => console.log("Connection failed", err));
-
-// const userCollection = mongoose.connection.collection("users");
+  .catch((err) => console.error("Connection failed", err));
 
 const userSchema = new mongoose.Schema({
   username: String,
