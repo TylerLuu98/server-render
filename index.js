@@ -13,10 +13,7 @@ app.use(express.json());
 
 mongoose
   .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
     serverSelectionTimeoutMS: 30000, // Increase connection timeout
-    bufferMaxEntries: 0, // Disable op buffering
   })
   .then(() => {
     console.log("Connected to MongoDB Atlas");
